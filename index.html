@@ -1,11 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+     <title>Список дел</title>
+     <link rel="icon" href="favicon.png" type="image/png">
 </head>
-<body>
-    
+<body class="body_sl"> 
+    <h1 class="page-title">Список дел</h1>
+
+    <input type="text" placeholder="Новый элемент списка">
+    <button class="btn">Создать</button>
+    <button class="btn">Очистить всё</button>
+
+    <ol class="task_list">
+        <li class="task">
+            <input type="checkbox">
+            Почесать кошку <sub> от 2023-08-24</sub> <!-- sub - нижний индекс; sup - верхний индекс -->
+            <button class="btn">❌</button>
+        </li>
+        <li class="task">
+            <input type="checkbox">
+            Полить картошку <sub>от 2022-05-04</sub>
+            <button class="btn">❌</button>
+        </li>
+        <li class="task">
+            <input type="checkbox">
+            Сложить в лукошко <sub>от 2022-05-11</sub>
+            <button class="btn">❌</button>
+        </li>
+    </ol>
+    <footer  class="footer_st">
+        <hr> <!-- горизонтальная линия (Horizontal Rule) -->
+        <p>Copyright © </p>
+    </footer>
 </body>
 </html>
