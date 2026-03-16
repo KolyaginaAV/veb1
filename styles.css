@@ -1,0 +1,350 @@
+/* ПЕРЕМЕННЫЕ */
+:root {
+    --primary-color: #325050;
+    --secondary-color: #f9f9f9; /*для списка*/
+    --accent-color: #A43434; 
+    --btn-color: #D8D8D8; /*кнопка создать*/
+    --text-dark: #777; /*для даты и уведомления, что нет событий*/
+    --border-radius: 8px;
+    --spacing: 20px;
+    --transition: 0.2s ease;
+}
+
+/* ОБНУЛЕНИЕ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+    /* Фоновое изображение */
+    background: url('fon.jpg') no-repeat center center fixed; 
+    background-size: cover; 
+}
+
+.body_sl {
+    background-color: var(--primary-color);
+    width: 100%;
+    max-width: 600px;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+/* СОСТАВНОЙ ЗАГОЛОВОК */
+.header-with-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.header-icon {
+    width: 40px;
+    height: 40px;
+    filter: brightness(0) invert(1); /* Делает иконку белой */
+    transition: transform var(--transition);
+}
+
+.header-icon:hover {
+    transform: rotate(10deg) scale(1.1);
+}
+
+.page-title {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 32px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    margin: 0;
+}
+
+/* БЛОК ДОБАВЛЕНИЯ НОВОГО ЭЛЕМЕНТА */
+.new_el_sp {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: var(--spacing);
+    width: 100%;
+}
+
+/* ПОЛЕ ВВОДА */
+.new_el_sp input[type="text"] {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    flex: 1;
+    min-width: 0;
+    transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.new_el_sp input[type="text"]:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(50, 80, 80, 0.2);
+}
+
+/* КНОПКИ */
+.new_el_sp button.btn {
+    padding: 12px 16px;
+    border: none;
+    border-radius: 4px;
+    color: #000000;
+    font-size: 14px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all var(--transition);
+}
+
+.new_el_sp button.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.new_el_sp button.btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* ПЕРВАЯ КНОПКА (Создать) */
+.new_el_sp button.btn:first-of-type {
+    background-color: var(--btn-color);
+}
+
+.new_el_sp button.btn:first-of-type:hover {
+    background-color: #c0c0c0;
+}
+
+/* ВТОРАЯ КНОПКА (Очистить всё) */
+.new_el_sp button.btn:nth-of-type(2) {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.new_el_sp button.btn:nth-of-type(2):hover {
+    background-color: #8a2a2a;
+}
+
+/* СПИСОК */
+.task_list {
+    list-style: none;
+    margin: var(--spacing) 0;
+    background-color: var(--secondary-color);
+    border-radius: var(--border-radius);
+    padding: 10px;
+    max-height: 300px;
+    overflow-y: auto;
+    flex-shrink: 1;
+}
+
+/* АНИМАЦИЯ ПОЯВЛЕНИЯ ЗАДАЧ */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ЭЛЕМЕНТ СПИСКА */
+.task {
+    padding: 12px 10px;
+    border-bottom: 1px solid #e0e0e0ae;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    position: relative;
+    background-color: white;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    transition: background-color var(--transition);
+    font-weight: 600;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.task:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+/* ПОДСВЕТКА ПРИ НАВЕДЕНИИ */
+.task:hover {
+    background-color: #e8f0fe;
+}
+
+/* ЧЕКБОКС */
+.task input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
+    margin-top: 2px;
+    flex-shrink: 0;
+    accent-color: var(--primary-color);
+    cursor: pointer;
+}
+
+/* ТЕКСТ ЗАДАЧИ */
+.task-text {
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: 30px;
+}
+
+/* ДАТА (ПОД ТЕКСТОМ) */
+.task sub {
+    display: block;
+    width: 100%;
+    color: var(--text-dark);
+    font-size: 11px;
+    font-weight: normal;
+    margin-top: 2px;
+    margin-left: 28px;
+}
+
+/* КНОПКА УДАЛЕНИЯ (КРЕСТИК) */
+.task button.btn {
+    background: none;
+    color: #999;
+    font-size: 20px;
+    padding: 0 8px;
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: auto;
+    margin: 0;
+    border: none;
+    cursor: pointer;
+    transition: color var(--transition), transform var(--transition);
+}
+
+.task button.btn:hover {
+    color: var(--accent-color);
+    transform: translateY(-50%) scale(1.2);
+    background: none;
+}
+
+/* ФУТЕР */
+.footer_st {
+    text-align: center;
+    color: white;
+    font-size: 14px;
+    margin-top: auto;
+    width: 100%;
+}
+
+.footer_st hr {
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    margin: 15px 0 8px;
+}
+
+/* СООБЩЕНИЕ "НЕ НАЙДЕНО" (для демонстрации) */
+.no-tasks-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+    background-color: var(--secondary-color);
+    border-radius: var(--border-radius);
+    color: var(--text-dark);
+    font-size: 18px;
+    text-align: center;
+    margin: var(--spacing) 0;
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* АДАПТИВНОСТЬ ДЛЯ МОБИЛЬНЫХ */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+    
+    .body_sl {
+        padding: 20px;
+    }
+    
+    .new_el_sp {
+        flex-wrap: wrap;
+    }
+    
+    .new_el_sp input[type="text"] {
+        flex: 0 0 100%;
+        margin-bottom: 8px;
+    }
+    
+    .new_el_sp button.btn {
+        flex: 1;
+        padding: 12px 10px;
+    }
+    
+    .header-icon {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .page-title {
+        font-size: 28px;
+    }
+    
+    /* Мобильное фоновое изображение */
+    body {
+        background-image: url('fonmob.jpg');
+    } 
+}
+
+/* АДАПТИВНОСТЬ ДЛЯ ПЛАНШЕТОВ */
+@media (min-width: 601px) and (max-width: 1024px) {
+    .body_sl {
+        max-width: 80%;
+    }
+}
+
+/* ДОПОЛНИТЕЛЬНЫЕ ЭФФЕКТЫ */
+.task input[type="checkbox"]:checked + .task-text {
+    text-decoration: line-through;
+    color: #999;
+}
+
+.task input[type="checkbox"]:checked ~ sub {
+    color: #ccc;
+}
+
+/* СКРОЛЛБАР */
+.task_list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.task_list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.task_list::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+.task_list::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}

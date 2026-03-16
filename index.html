@@ -2,36 +2,54 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-     <title>Список дел</title>
-     <link rel="icon" href="favicon.png" type="image/png">
+    <title>Список дел</title>
+    <link rel="icon" href="favicon.png" type="image/png">
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body class="body_sl"> 
-    <h1 class="page-title">Список дел</h1>
-
-    <input type="text" placeholder="Новый элемент списка">
-    <button class="btn">Создать</button>
-    <button class="btn">Очистить всё</button>
-
-    <ol class="task_list">
-        <li class="task">
-            <input type="checkbox">
-            Почесать кошку <sub> от 2023-08-24</sub> <!-- sub - нижний индекс; sup - верхний индекс -->
-            <button class="btn">❌</button>
-        </li>
-        <li class="task">
-            <input type="checkbox">
-            Полить картошку <sub>от 2022-05-04</sub>
-            <button class="btn">❌</button>
-        </li>
-        <li class="task">
-            <input type="checkbox">
-            Сложить в лукошко <sub>от 2022-05-11</sub>
-            <button class="btn">❌</button>
-        </li>
-    </ol>
-    <footer  class="footer_st">
-        <hr> <!-- горизонтальная линия (Horizontal Rule) -->
-        <p>Copyright © </p>
-    </footer>
+<body>
+    <div class="body_sl">
+        <div class="header-with-icon">
+            <img src="favicon.png" alt="icon" class="header-icon">
+            <h1 class="page-title">Список дел</h1>
+        </div>
+        
+        <div class="new_el_sp">
+            <input type="text" placeholder="Новый элемент списка">
+            <button class="btn">Создать</button>
+            <button class="btn">Очистить всё</button>
+        </div>
+        
+        <!-- Для демонстрации сообщения "Не найдено" закомментировать список -->
+        <ol class="task_list">
+            <li class="task">
+                <input type="checkbox">
+                <span class="task-text">Почесать кошку</span>
+                <sub>от 2023-08-24</sub>
+                <button class="btn">✖</button>
+            </li>
+            <li class="task">
+                <input type="checkbox">
+                <span class="task-text">Полить картошку</span>
+                <sub>от 2022-05-04</sub>
+                <button class="btn">✖</button>
+            </li>
+            <li class="task">
+                <input type="checkbox">
+                <span class="task-text">Сложить в лукошко</span>
+                <sub>от 2022-05-11</sub>
+                <button class="btn">✖</button>
+            </li>
+        </ol>
+        
+        <!-- Раскомментировать для демонстрации сообщения "Не найдено" -->
+        <!-- <div class="no-tasks-message">
+            Не найдено ни одного дела
+        </div> -->
+        
+        <footer class="footer_st">
+            <hr>
+            <p>Copyright ©</p>
+        </footer>
+    </div>
 </body>
 </html>
